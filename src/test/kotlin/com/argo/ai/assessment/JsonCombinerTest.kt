@@ -54,6 +54,7 @@ class JsonCombinerTest {
 	private val expectedCombinedLeo = Combined("leo", "green", "ca")
 	private val expectedCombinedSara = Combined("sara", "", "ny")
 	private val expectedCombinedKylo = Combined("kylo", "brown", "")
+	private val expectedCombinedJoe = Combined("joe", "", "fl")
 
 	@Test
 	fun testSomeLibraryMethod() {
@@ -66,7 +67,8 @@ class JsonCombinerTest {
 				expectedCombinedLogan,
 				expectedCombinedLeo,
 				expectedCombinedSara,
-				expectedCombinedKylo)
+				expectedCombinedKylo,
+				expectedCombinedJoe)
 	}
 }
 

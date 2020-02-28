@@ -18,14 +18,15 @@ object JsonCombiner {
 
 	fun mergeColorAndState(colorsJson: String, stateJson: String): String {
 
-		val colors = colorsAdapter.fromJson(colorsJson)?.colors.orEmpty()
-		val nameToStates = statesAdapter.fromJson(stateJson)?.state
+		val nameToColors = colorsAdapter.fromJson(colorsJson)?.colors
 				?.asSequence()
 				.orEmpty()
-				.map { it.name to it.state }
+				.map { it.name to it.color }
 				.toMap()
+		val states = statesAdapter.fromJson(stateJson)?.state.orEmpty()
+
 		return combinedAdapter.toJson(
-				colors.map { Combined(it.name, it.color, nameToStates[it.name].orEmpty()) })
+				states.map { Combined(it.name, nameToColors[it.name].orEmpty(), it.state) })
 	}
 }
 
